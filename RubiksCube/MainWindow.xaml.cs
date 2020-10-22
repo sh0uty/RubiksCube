@@ -23,6 +23,7 @@ namespace RubiksCube
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new Cube();
         }
     }
 }
