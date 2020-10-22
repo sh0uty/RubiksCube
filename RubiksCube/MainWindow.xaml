@@ -37,13 +37,13 @@
             </Grid.RowDefinitions>
 
             <Rectangle Fill="{Binding Sides[0].Cells[0]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="0"/>
-            <Rectangle Fill="{Binding Sides[0].Cells[1]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="1"/>
-            <Rectangle Fill="{Binding Sides[0].Cells[2]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="2"/>
-            <Rectangle Fill="{Binding Sides[0].Cells[3]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="0"/>
+            <Rectangle Fill="{Binding Sides[0].Cells[1]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="0"/>
+            <Rectangle Fill="{Binding Sides[0].Cells[2]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="0"/>
+            <Rectangle Fill="{Binding Sides[0].Cells[3]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="1"/>
             <Rectangle Fill="{Binding Sides[0].Cells[4]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="1"/>
-            <Rectangle Fill="{Binding Sides[0].Cells[5]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="2"/>
-            <Rectangle Fill="{Binding Sides[0].Cells[6]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="0"/>
-            <Rectangle Fill="{Binding Sides[0].Cells[7]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="1"/>
+            <Rectangle Fill="{Binding Sides[0].Cells[5]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="1"/>
+            <Rectangle Fill="{Binding Sides[0].Cells[6]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="2"/>
+            <Rectangle Fill="{Binding Sides[0].Cells[7]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="2"/>
             <Rectangle Fill="{Binding Sides[0].Cells[8]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="2"/>
 
             <Rectangle Fill="{Binding Sides[1].Cells[0]}" Margin="1" Stroke="Black" Grid.Column="0" Grid.Row="3"/>
@@ -87,13 +87,13 @@
             <Rectangle Fill="{Binding Sides[4].Cells[8]}" Margin="1" Stroke="Black" Grid.Column="11" Grid.Row="5"/>
 
             <Rectangle Fill="{Binding Sides[5].Cells[0]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="6"/>
-            <Rectangle Fill="{Binding Sides[5].Cells[1]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="7"/>
-            <Rectangle Fill="{Binding Sides[5].Cells[2]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="8"/>
-            <Rectangle Fill="{Binding Sides[5].Cells[3]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="6"/>
+            <Rectangle Fill="{Binding Sides[5].Cells[1]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="6"/>
+            <Rectangle Fill="{Binding Sides[5].Cells[2]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="6"/>
+            <Rectangle Fill="{Binding Sides[5].Cells[3]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="7"/>
             <Rectangle Fill="{Binding Sides[5].Cells[4]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="7"/>
-            <Rectangle Fill="{Binding Sides[5].Cells[5]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="8"/>
-            <Rectangle Fill="{Binding Sides[5].Cells[6]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="6"/>
-            <Rectangle Fill="{Binding Sides[5].Cells[7]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="7"/>
+            <Rectangle Fill="{Binding Sides[5].Cells[5]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="7"/>
+            <Rectangle Fill="{Binding Sides[5].Cells[6]}" Margin="1" Stroke="Black" Grid.Column="3" Grid.Row="8"/>
+            <Rectangle Fill="{Binding Sides[5].Cells[7]}" Margin="1" Stroke="Black" Grid.Column="4" Grid.Row="8"/>
             <Rectangle Fill="{Binding Sides[5].Cells[8]}" Margin="1" Stroke="Black" Grid.Column="5" Grid.Row="8"/>
         </Grid>
     </Border>

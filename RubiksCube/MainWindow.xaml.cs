@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,10 @@ namespace RubiksCube
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new Cube();
+
+            Cube cube = new Cube();
+
+            this.DataContext = cube;
         }
     }
 }

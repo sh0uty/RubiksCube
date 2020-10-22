@@ -7,14 +7,20 @@ using System.Windows;
 
 namespace RubiksCube
 {
-    public enum SideColor
+    public enum Operation
     {
-        Blue,
-        Orange,
-        White,
-        Red,
-        Yellow,
-        Green
+        CounterClockwise = -1,
+        Clockwise = 1
+    }
+
+    public enum Orientation
+    {
+        Top,
+        Left,
+        Front,
+        Right,
+        Back,
+        Down
     }
 
     class Side
@@ -26,11 +32,11 @@ namespace RubiksCube
             get { return this._cells; }
         }
 
-        public SideColor SideColor { get; private set; }
+        public Orientation Orientation { get; private set; }
 
-        public Side(string color, SideColor sidecolor)
+        public Side(string color, Orientation orientation)
         {
-            SideColor = sidecolor;
+            this.Orientation = orientation;
 
             _cells = new string[9];
             for (int i = 0; i < _cells.Length; i++)
