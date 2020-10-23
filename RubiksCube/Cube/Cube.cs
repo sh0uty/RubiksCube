@@ -21,6 +21,10 @@ namespace RubiksCube
             get { return _sides; }
         }
 
+        private int[,] changeIndexClockwise = new int[,] {
+            { 0, 6 }, { 3, 7 }, { 6, 8 }, { 7, 5 }, { 8, 2 }, { 5, 1 } 
+        };
+
         private string[] Colors = new string[6]
         {
             "Blue",
@@ -48,46 +52,74 @@ namespace RubiksCube
                 currentColor = newColor;
         }
 
-        public void Manipulate(Orientation orientation, Operation operation)
+        public void Rotate(Orientation orientation, Operation operation)
         { 
 
             switch (orientation)
             {
 
                 case Orientation.Front:
-
-                    Move(new int[] { 6, 7, 8, 27, 30, 33, 47, 46, 45, 17, 14, 11 }, operation);
-
+                    Manipulate(new int[] { 6, 7, 8, 27, 30, 33, 47, 46, 45, 17, 14, 11 }, orientation, operation);
                     break;
-
+                case Orientation.Right:
+                    Manipulate(new int[] { 8, 5, 2, 36, 39, 42, 53, 50, 47, 26, 23, 20 }, orientation, operation);
+                    break;
             }
         }
 
-        private void Move(int[] cells, Operation operation)
+        private string GetColorFromCells(int cell)
+        {
+            return Sides[cell / 9].Cells[cell % 9];
+        }
+
+        private void SetColorFromCell(int cell, string color)
+        {
+            Sides[cell / 9].Cells[cell % 9] = color;
+        }
+
+        private void RotateOrientationSide(Orientation orientation)
+        {
+            string[] tempColor = new string[] { GetColorFromCells((int)orientation * 9 + 0), GetColorFromCells((int)orientation * 9 + 3) };
+
+            for(int i = 0; i < 6; i++)
+            {
+                SetColorFromCell((int)orientation * 9 + changeIndexClockwise[ i, 0 ], GetColorFromCells((int)orientation * 9 + changeIndexClockwise[ i, 1 ]));
+            }
+            SetColorFromCell((int)orientation * 9 + 2, tempColor[0]);
+            SetColorFromCell((int)orientation * 9 + 1, tempColor[1]);
+        }
+
+        private void Manipulate(int[] cells, Orientation orientation, Operation operation)
         {
 
             if(operation == Operation.Clockwise)
             {
-                string ReplacementColor= "";
-                string ColorToBeReplaced = "";
+                string[] ReplacementRow = new string[3];
+                string[] RowToBeReplaced = new string[3];
                 for (int i = 0; i < 4; i++)
                 {
-                    ReplacementColor = ColorToBeReplaced;
-                    ColorToBeReplaced = Sides[cells[ (i * 3 + 3) %  12] / 9].Cells[cells[(i * 3 + 3) % 12 ] % 9];
+
+                    if(i != 0)
+                    {
+                        ReplacementRow = RowToBeReplaced.ToArray();
+                    }
 
                     for (int j = 0; j < 3; j++)
-                    { 
-                        if(i == 0)
+                    {
+                        RowToBeReplaced[j] = GetColorFromCells(cells[(i * 3 + j + 3) % 12]);
+
+                        if (i == 0)
                         {
-                            Sides[cells[(i * 3 + j + 3) % 12] / 9].Cells[cells[(i * 3 + j + 3) % 12] % 9] = Sides[cells[(i * 3 + j) % 12] / 9].Cells[cells[(i * 3 + j) % 12] % 9];
+                            SetColorFromCell(cells[(i * 3 + j + 3) % 12], GetColorFromCells(cells[(i * 3 + j) % 12]));
                         }
                         else
                         {
-                            Sides[cells[(i * 3 + j + 3) % 12] / 9].Cells[cells[(i * 3 + j + 3) % 12] % 9] = ReplacementColor;
+                            SetColorFromCell(cells[(i * 3 + j + 3) % 12], ReplacementRow[j]);
                         }
-                    }
 
+                    }
                 }
+                RotateOrientationSide(orientation);
             }
             else
             {
