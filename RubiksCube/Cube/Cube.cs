@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Text;
@@ -11,6 +13,12 @@ using System.Windows.Media.TextFormatting;
 
 namespace RubiksCube
 {
+    public enum Operation
+    {
+        CounterClockwise = -1,
+        Clockwise = 1
+    }
+
     class Cube : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
@@ -44,23 +52,33 @@ namespace RubiksCube
             }
         }
 
-        public void SetColor(string currentColor, string newColor)
-        {
-                currentColor = newColor;
-        }
-
         public void Rotate(Orientation orientation, Operation operation)
         { 
 
             switch (orientation)
             {
-
+                case Orientation.Top:
+                    Manipulate(new int[] { 0 }, orientation, operation);
+                    break;
+                case Orientation.Left:
+                    Manipulate(new int[] { 0 }, orientation, operation);
+                    break;
                 case Orientation.Front:
                     Manipulate(new int[] { 6, 7, 8, 27, 30, 33, 47, 46, 45, 17, 14, 11 }, orientation, operation);
                     break;
                 case Orientation.Right:
                     Manipulate(new int[] { 8, 5, 2, 36, 39, 42, 53, 50, 47, 26, 23, 20 }, orientation, operation);
                     break;
+                case Orientation.Back:
+                    Manipulate(new int[] { 0 }, orientation, operation);
+                    break;
+                case Orientation.Down:
+                    Manipulate(new int[] { 0 }, orientation, operation);
+                    break;
+
+
+
+                default: break;
             }
         }
 
@@ -88,47 +106,48 @@ namespace RubiksCube
             */
 
             List<int> Positions = new List<int>();
-
             Positions.AddRange(SideRotationIndexes);
 
             Queue<string> Colors = new Queue<string>();
-
             Positions.ForEach(position => Colors.Enqueue(GetColorFromCells((int)orientation * 9 + position)));
 
             if(operation == Operation.Clockwise)
             {
                 for (int i = 0; i < 6; i++)
                     Colors.Enqueue(Colors.Dequeue());
-
-                Positions.ForEach(pos => SetColorFromCell((int)orientation * 9 + pos, Colors.Dequeue()));
             }
+
+            if(operation == Operation.CounterClockwise)
+            {
+                for (int i = 0; i < 2; i++)
+                    Colors.Enqueue(Colors.Dequeue());
+            }
+
+            Positions.ForEach(pos => SetColorFromCell((int)orientation * 9 + pos, Colors.Dequeue()));
         }
 
         private void Manipulate(int[] cells, Orientation orientation, Operation operation)
         {
+            Queue<string> Colors = new Queue<string>();
 
-            if(operation == Operation.Clockwise)
+            cells.ToList().ForEach(cell => Colors.Enqueue(GetColorFromCells(cell)));
+
+            if (operation == Operation.Clockwise)
+            {
+                for(int i = 0; i < 9; i++)
+                    Colors.Enqueue(Colors.Dequeue());
+            }
+
+            if(operation == Operation.CounterClockwise)
             {
 
-                Queue<string> Colors = new Queue<string>();
-
-                cells.ToList().ForEach(cell => Colors.Enqueue(GetColorFromCells(cell)));
-
-                for(int i = 0; i < 9; i++)
+                for (int i = 0; i < 3; i++)
                     Colors.Enqueue(Colors.Dequeue());
-
-                cells.ToList().ForEach(cell => SetColorFromCell(cell, Colors.Dequeue()));
-
-                Colors.Clear();
-
-                for(int i = 0; i < 9; i++)
-                    Colors.Enqueue(GetColorFromCells((int)orientation * 9) + i);
-
-                for(int i = 0; i < 3; i++)
-                    Colors.Enqueue(Colors.Dequeue());
-
-                RotateOrientationSide(orientation, operation);
             }
+
+            cells.ToList().ForEach(cell => SetColorFromCell(cell, Colors.Dequeue()));
+
+            RotateOrientationSide(orientation, operation);
 
         }
         /*

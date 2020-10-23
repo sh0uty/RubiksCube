@@ -7,12 +7,6 @@ using System.Windows;
 
 namespace RubiksCube
 {
-    public enum Operation
-    {
-        CounterClockwise = -1,
-        Clockwise = 1
-    }
-
     public enum Orientation
     {
         Top,

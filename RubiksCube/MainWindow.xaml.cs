@@ -29,12 +29,9 @@ namespace RubiksCube
 
             this.DataContext = cube;
 
-            cube.Rotate(Orientation.Right, Operation.Clockwise);
-            cube.Rotate(Orientation.Front, Operation.Clockwise);
-            cube.Rotate(Orientation.Right, Operation.Clockwise);
-            cube.Rotate(Orientation.Right, Operation.Clockwise);
-            cube.Rotate(Orientation.Front, Operation.Clockwise);
-            cube.Rotate(Orientation.Right, Operation.Clockwise);
+            cube.Rotate(Orientation.Front, Operation.CounterClockwise);
+            cube.Rotate(Orientation.Right, Operation.CounterClockwise);
+            cube.Rotate(Orientation.Front, Operation.CounterClockwise);
 
         }
     }
