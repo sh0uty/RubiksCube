@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Media.TextFormatting;
 
 namespace RubiksCube
@@ -21,9 +22,7 @@ namespace RubiksCube
             get { return _sides; }
         }
 
-        private int[,] changeIndexClockwise = new int[,] {
-            { 0, 6 }, { 3, 7 }, { 6, 8 }, { 7, 5 }, { 8, 2 }, { 5, 1 } 
-        };
+        private int[] SideRotationIndexes = new int[] { 0, 1, 2, 5, 8, 7, 6, 3 };
 
         private string[] Colors = new string[6]
         {
@@ -34,8 +33,6 @@ namespace RubiksCube
             "Yellow",
             "Green"
         };
-
-        private int[,] Indexes;
 
         public Cube()
         {
@@ -77,8 +74,9 @@ namespace RubiksCube
             Sides[cell / 9].Cells[cell % 9] = color;
         }
 
-        private void RotateOrientationSide(Orientation orientation)
+    private void RotateOrientationSide(Orientation orientation, Operation operation)
         {
+            /*
             string[] tempColor = new string[] { GetColorFromCells((int)orientation * 9 + 0), GetColorFromCells((int)orientation * 9 + 3) };
 
             for(int i = 0; i < 6; i++)
@@ -87,8 +85,53 @@ namespace RubiksCube
             }
             SetColorFromCell((int)orientation * 9 + 2, tempColor[0]);
             SetColorFromCell((int)orientation * 9 + 1, tempColor[1]);
+            */
+
+            List<int> Positions = new List<int>();
+
+            Positions.AddRange(SideRotationIndexes);
+
+            Queue<string> Colors = new Queue<string>();
+
+            Positions.ForEach(position => Colors.Enqueue(GetColorFromCells((int)orientation * 9 + position)));
+
+            if(operation == Operation.Clockwise)
+            {
+                for (int i = 0; i < 6; i++)
+                    Colors.Enqueue(Colors.Dequeue());
+
+                Positions.ForEach(pos => SetColorFromCell((int)orientation * 9 + pos, Colors.Dequeue()));
+            }
         }
 
+        private void Manipulate(int[] cells, Orientation orientation, Operation operation)
+        {
+
+            if(operation == Operation.Clockwise)
+            {
+
+                Queue<string> Colors = new Queue<string>();
+
+                cells.ToList().ForEach(cell => Colors.Enqueue(GetColorFromCells(cell)));
+
+                for(int i = 0; i < 9; i++)
+                    Colors.Enqueue(Colors.Dequeue());
+
+                cells.ToList().ForEach(cell => SetColorFromCell(cell, Colors.Dequeue()));
+
+                Colors.Clear();
+
+                for(int i = 0; i < 9; i++)
+                    Colors.Enqueue(GetColorFromCells((int)orientation * 9) + i);
+
+                for(int i = 0; i < 3; i++)
+                    Colors.Enqueue(Colors.Dequeue());
+
+                RotateOrientationSide(orientation, operation);
+            }
+
+        }
+        /*
         private void Manipulate(int[] cells, Orientation orientation, Operation operation)
         {
 
@@ -126,6 +169,7 @@ namespace RubiksCube
 
             }
         }
+        */
 
     }
 }

@@ -32,7 +32,9 @@ namespace RubiksCube
             cube.Rotate(Orientation.Right, Operation.Clockwise);
             cube.Rotate(Orientation.Front, Operation.Clockwise);
             cube.Rotate(Orientation.Right, Operation.Clockwise);
-
+            cube.Rotate(Orientation.Right, Operation.Clockwise);
+            cube.Rotate(Orientation.Front, Operation.Clockwise);
+            cube.Rotate(Orientation.Right, Operation.Clockwise);
 
         }
     }
