@@ -7,6 +7,14 @@ using System.Windows;
 
 namespace RubiksCube
 {
+
+    #region Enums
+    public enum Operation
+    {
+        CounterClockwise = -1,
+        Clockwise = 1
+    }
+
     public enum Orientation
     {
         Top,
@@ -17,8 +25,12 @@ namespace RubiksCube
         Down
     }
 
+    #endregion
+
     class Side
     {
+        #region Public Members
+
         string[] _cells;
 
         public string[] Cells
@@ -28,6 +40,9 @@ namespace RubiksCube
 
         public Orientation Orientation { get; private set; }
 
+        #endregion
+
+        #region Constructors
         public Side(string color, Orientation orientation)
         {
             this.Orientation = orientation;
@@ -37,6 +52,8 @@ namespace RubiksCube
                 _cells[i] = color;
 
         }
+
+        #endregion
 
     }
 }

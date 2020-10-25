@@ -21,7 +21,13 @@ namespace RubiksCube
 
     class Cube : INotifyPropertyChanged
     {
+        #region Events
+
         public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+
+        #endregion
+
+        #region Public Members
 
         Side[] _sides;
 
@@ -29,6 +35,10 @@ namespace RubiksCube
         {
             get { return _sides; }
         }
+
+        #endregion
+
+        #region Privte Members
 
         private int[] SideRotationIndexes = new int[] { 0, 1, 2, 5, 8, 7, 6, 3 };
 
@@ -42,6 +52,9 @@ namespace RubiksCube
             "Green"
         };
 
+        #endregion
+
+        #region Constructors
         public Cube()
         {
             _sides = new Side[6];
@@ -52,16 +65,20 @@ namespace RubiksCube
             }
         }
 
+        #endregion
+
+        #region Public Methods
+
         public void Rotate(Orientation orientation, Operation operation)
         { 
 
             switch (orientation)
             {
                 case Orientation.Top:
-                    Manipulate(new int[] { 0 }, orientation, operation);
+                    Manipulate(new int[] { 38, 37, 36, 29, 28, 27, 20, 19, 18, 11, 10, 9 }, orientation, operation);
                     break;
                 case Orientation.Left:
-                    Manipulate(new int[] { 0 }, orientation, operation);
+                    Manipulate(new int[] { 18, 21, 24, 45, 48, 51, 38, 41, 44, 0, 3, 6}, orientation, operation);
                     break;
                 case Orientation.Front:
                     Manipulate(new int[] { 6, 7, 8, 27, 30, 33, 47, 46, 45, 17, 14, 11 }, orientation, operation);
@@ -75,12 +92,13 @@ namespace RubiksCube
                 case Orientation.Down:
                     Manipulate(new int[] { 0 }, orientation, operation);
                     break;
-
-
-
                 default: break;
             }
         }
+
+        #endregion
+
+        #region Private Methods
 
         private string GetColorFromCells(int cell)
         {
@@ -92,19 +110,8 @@ namespace RubiksCube
             Sides[cell / 9].Cells[cell % 9] = color;
         }
 
-    private void RotateOrientationSide(Orientation orientation, Operation operation)
+        private void RotateOrientationSide(Orientation orientation, Operation operation)
         {
-            /*
-            string[] tempColor = new string[] { GetColorFromCells((int)orientation * 9 + 0), GetColorFromCells((int)orientation * 9 + 3) };
-
-            for(int i = 0; i < 6; i++)
-            {
-                SetColorFromCell((int)orientation * 9 + changeIndexClockwise[ i, 0 ], GetColorFromCells((int)orientation * 9 + changeIndexClockwise[ i, 1 ]));
-            }
-            SetColorFromCell((int)orientation * 9 + 2, tempColor[0]);
-            SetColorFromCell((int)orientation * 9 + 1, tempColor[1]);
-            */
-
             List<int> Positions = new List<int>();
             Positions.AddRange(SideRotationIndexes);
 
@@ -150,45 +157,6 @@ namespace RubiksCube
             RotateOrientationSide(orientation, operation);
 
         }
-        /*
-        private void Manipulate(int[] cells, Orientation orientation, Operation operation)
-        {
-
-            if(operation == Operation.Clockwise)
-            {
-                string[] ReplacementRow = new string[3];
-                string[] RowToBeReplaced = new string[3];
-                for (int i = 0; i < 4; i++)
-                {
-
-                    if(i != 0)
-                    {
-                        ReplacementRow = RowToBeReplaced.ToArray();
-                    }
-
-                    for (int j = 0; j < 3; j++)
-                    {
-                        RowToBeReplaced[j] = GetColorFromCells(cells[(i * 3 + j + 3) % 12]);
-
-                        if (i == 0)
-                        {
-                            SetColorFromCell(cells[(i * 3 + j + 3) % 12], GetColorFromCells(cells[(i * 3 + j) % 12]));
-                        }
-                        else
-                        {
-                            SetColorFromCell(cells[(i * 3 + j + 3) % 12], ReplacementRow[j]);
-                        }
-
-                    }
-                }
-                RotateOrientationSide(orientation);
-            }
-            else
-            {
-
-            }
-        }
-        */
-
+        #endregion
     }
 }
