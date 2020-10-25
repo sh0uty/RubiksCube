@@ -13,12 +13,6 @@ using System.Windows.Media.TextFormatting;
 
 namespace RubiksCube
 {
-    public enum Operation
-    {
-        CounterClockwise = -1,
-        Clockwise = 1
-    }
-
     class Cube : INotifyPropertyChanged
     {
         #region Events
@@ -71,7 +65,6 @@ namespace RubiksCube
 
         public void Rotate(Orientation orientation, Operation operation)
         { 
-
             switch (orientation)
             {
                 case Orientation.Top:
