@@ -11,7 +11,7 @@ namespace RubiksCube
     #region Enums
     public enum Operation
     {
-        CounterClockwise = -1,
+        CounterClockwise = 0,
         Clockwise = 1
     }
 

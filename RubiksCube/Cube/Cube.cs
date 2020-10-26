@@ -36,6 +36,8 @@ namespace RubiksCube
 
         private int[] SideRotationIndexes = new int[] { 0, 1, 2, 5, 8, 7, 6, 3 };
 
+        private Random random;
+
         private string[] Colors = new string[6]
         {
             "Blue",
@@ -52,6 +54,7 @@ namespace RubiksCube
         public Cube()
         {
             _sides = new Side[6];
+            random = new Random();
 
             for(int i = 0; i < _sides.Length; i++)
             {
@@ -71,7 +74,7 @@ namespace RubiksCube
                     Manipulate(new int[] { 38, 37, 36, 29, 28, 27, 20, 19, 18, 11, 10, 9 }, orientation, operation);
                     break;
                 case Orientation.Left:
-                    Manipulate(new int[] { 18, 21, 24, 45, 48, 51, 38, 41, 44, 0, 3, 6}, orientation, operation);
+                    Manipulate(new int[] { 18, 21, 24, 45, 48, 51, 44, 41, 38, 0, 3, 6}, orientation, operation);
                     break;
                 case Orientation.Front:
                     Manipulate(new int[] { 6, 7, 8, 27, 30, 33, 47, 46, 45, 17, 14, 11 }, orientation, operation);
@@ -80,12 +83,28 @@ namespace RubiksCube
                     Manipulate(new int[] { 8, 5, 2, 36, 39, 42, 53, 50, 47, 26, 23, 20 }, orientation, operation);
                     break;
                 case Orientation.Back:
-                    Manipulate(new int[] { 0 }, orientation, operation);
+                    Manipulate(new int[] { 2, 1, 0, 9, 12, 15, 51, 52, 53, 35, 32, 29 }, orientation, operation);
                     break;
                 case Orientation.Down:
-                    Manipulate(new int[] { 0 }, orientation, operation);
+                    Manipulate(new int[] { 15, 16, 17, 24, 25, 26, 33, 34, 35, 42, 43, 44 }, orientation, operation);
                     break;
                 default: break;
+            }
+        }
+
+        public void Randomize(int moves)
+        {
+            Orientation orientation;
+            Operation operation;
+
+            for(int i = 0; i < moves; i++)
+            {
+                orientation = (Orientation)random.Next(6);
+                operation = (Operation)random.Next(2);
+
+                Debug.WriteLine(String.Format("{0} : {1}", orientation, operation));
+
+                Rotate(orientation, operation);
             }
         }
 
