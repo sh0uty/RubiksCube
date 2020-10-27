@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:RubiksCube"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="Rectangle">
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Stroke" Value="Black"/>
+        </Style>
     </Application.Resources>
 </Application>
