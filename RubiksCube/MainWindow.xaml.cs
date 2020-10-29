@@ -7,15 +7,19 @@ namespace RubiksCube
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Cube cube;
         public MainWindow()
         {
             InitializeComponent();
 
-            Cube cube = new Cube();
+            cube = new Cube();
 
             this.DataContext = cube;
+        }
 
-            cube.Randomize(20);
+        private void MoveLeft_Click(object sender, RoutedEventArgs e)
+        {
+            cube.Rotate(Orientation.Left, Operation.Clockwise);
         }
     }
 }

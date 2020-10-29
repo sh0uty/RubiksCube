@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace RubiksCube
 {
-    class Cube : INotifyPropertyChanged
+    public class Cube : INotifyPropertyChanged
     {
+        
         #region Events
 
-        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string fullpath = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(fullpath));
+        }
 
         #endregion
+        
 
         #region Public Members
 
@@ -160,7 +168,7 @@ namespace RubiksCube
             cells.ToList().ForEach(cell => SetColorFromCell(cell, Colors.Dequeue()));
 
             RotateOrientationSide(orientation, operation);
-
+            OnPropertyChanged("Sides");
         }
         #endregion
     }

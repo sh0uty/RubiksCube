@@ -40,7 +40,7 @@
                 <ColumnDefinition Width="10*"/>
             </Grid.ColumnDefinitions>
 
-            <Rectangle Fill="{Binding Sides[0].Cells[0]}" Grid.Column="3" Grid.Row="0"/>
+            <Rectangle Fill="{Binding Sides[0].Cells[0], UpdateSourceTrigger=PropertyChanged}"  Grid.Column="3" Grid.Row="0"/>
             <Rectangle Fill="{Binding Sides[0].Cells[1]}" Grid.Column="4" Grid.Row="0"/>
             <Rectangle Fill="{Binding Sides[0].Cells[2]}" Grid.Column="5" Grid.Row="0"/>
             <Rectangle Fill="{Binding Sides[0].Cells[3]}" Grid.Column="3" Grid.Row="1"/>
@@ -99,6 +99,12 @@
             <Rectangle Fill="{Binding Sides[5].Cells[6]}" Grid.Column="3" Grid.Row="8"/>
             <Rectangle Fill="{Binding Sides[5].Cells[7]}" Grid.Column="4" Grid.Row="8"/>
             <Rectangle Fill="{Binding Sides[5].Cells[8]}" Grid.Column="5" Grid.Row="8"/>
+
+            <StackPanel Grid.Column="12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="MoveLeft" Content="L" Style="{StaticResource MoveButton}" Click="MoveLeft_Click"/>
+                <Button Content="L'" Style="{StaticResource MoveButton}"/>
+            </StackPanel>
+            
         </Grid>
     </Border>
 </Window>

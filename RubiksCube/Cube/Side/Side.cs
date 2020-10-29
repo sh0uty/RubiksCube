@@ -27,7 +27,7 @@ namespace RubiksCube
 
     #endregion
 
-    class Side
+    public class Side
     {
         #region Public Members
 
