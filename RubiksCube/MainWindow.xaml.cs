@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using RubiksCube.ViewModels;
 
 namespace RubiksCube
 {
@@ -7,19 +8,10 @@ namespace RubiksCube
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Cube cube;
         public MainWindow()
         {
             InitializeComponent();
-
-            cube = new Cube();
-
-            this.DataContext = cube;
-        }
-
-        private void MoveLeft_Click(object sender, RoutedEventArgs e)
-        {
-            cube.Rotate(Orientation.Left, Operation.Clockwise);
+            this.DataContext = new CubeViewModel();
         }
     }
 }
