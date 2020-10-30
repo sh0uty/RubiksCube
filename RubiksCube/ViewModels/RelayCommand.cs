@@ -6,23 +6,48 @@ namespace RubiksCube.ViewModels
 {
     class RelayCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged = (sender, e) => { };
+        #region Events
 
-        private Action Action;
-
-        public RelayCommand(Action action)
+        public event EventHandler CanExecuteChanged
         {
-            this.Action = action;
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
         }
+
+        #endregion
+
+        #region Private Members
+
+        private readonly Action<object> Action;
+        private readonly Predicate<object> Predicate;
+
+        #endregion
+
+        #region Constructors
+
+        public RelayCommand(Action<object> action, Predicate<object> predicate)
+        {
+            this.Action = action ?? throw new NullReferenceException("action");
+            this.Predicate = predicate;
+        }
+
+        public RelayCommand(Action<object> action) : this(action, null) { }
+
+        #endregion
+
+        #region Public Methods
+
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return Predicate == null || Predicate(parameter);
         }
 
         public void Execute(object parameter)
         {
-            Action.Invoke();
+            Action.Invoke(parameter);
         }
+
+        #endregion
     }
 }

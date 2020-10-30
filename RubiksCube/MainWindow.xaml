@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RubiksCube"
+        xmlns:models="clr-namespace:RubiksCube.Models"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" 
         MinHeight="720" MinWidth="1280" 
-        Background="#FF1B1A21" 
+        Background="#FF231E2C" 
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen">
     <Border Padding="20">
@@ -101,8 +102,8 @@
             <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[8]}" Grid.Column="5" Grid.Row="8"/>
 
             <StackPanel Grid.Column="12" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="MoveLeft" Content="L" Style="{StaticResource MoveButton}" Command="{Binding RotateLeftCommand}"/>
-                <Button Content="L'" Style="{StaticResource MoveButton}"/>
+                <Button Content="L" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Left}"/>
+                <Button Content="L'" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Left}"/>
             </StackPanel>
             
         </Grid>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using RubiksCube.Models;
@@ -26,14 +27,18 @@ namespace RubiksCube.ViewModels
 
         #region Public Members
 
-        public ICommand RotateLeftCommand { get; set; }
+        public ICommand RotateClockwiseCommand { get; private set; }
+        public ICommand RotateCounterClockwiseCommand { get; private set; }
+
+        public ObservableCollection<string> Moves;
 
         public Cube RubiksCube
         {
             get { return _rubiksCube; }
-            private set { 
-                if (_rubiksCube == value) return; 
-                OnPropertyChanged(nameof(RubiksCube)); 
+            set { 
+                if (_rubiksCube == value) 
+                    return;
+                _rubiksCube = value;
             }
         }
 
@@ -45,7 +50,10 @@ namespace RubiksCube.ViewModels
         {
             _rubiksCube = new Cube();
 
-            RotateLeftCommand = new RelayCommand(RotateLeft);
+            Moves = new ObservableCollection<string>();
+
+            RotateClockwiseCommand = new RelayCommand(RotateClockwise);
+            RotateCounterClockwiseCommand = new RelayCommand(RotateCounterClockwise);
         }
 
         #endregion
@@ -53,9 +61,15 @@ namespace RubiksCube.ViewModels
 
         #region Private Methods
 
-        private void RotateLeft()
+        private void RotateClockwise(object parameter)
         {
-            RubiksCube.Rotate(Orientation.Left, Operation.Clockwise);
+            RubiksCube.Rotate((Orientation)parameter, Operation.Clockwise);
+            OnPropertyChanged("RubiksCube");
+        }
+
+        private void RotateCounterClockwise(object parameter)
+        {
+            RubiksCube.Rotate((Orientation)parameter, Operation.CounterClockwise);
             OnPropertyChanged("RubiksCube");
         }
 
