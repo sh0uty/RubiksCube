@@ -6,7 +6,7 @@ using RubiksCube.Models;
 
 namespace RubiksCube.ViewModels
 {
-    class CubeViewModel : INotifyPropertyChanged
+    public class CubeViewModel : INotifyPropertyChanged
     {
         #region Events
 

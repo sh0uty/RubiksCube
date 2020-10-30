@@ -4,13 +4,23 @@
              xmlns:local="clr-namespace:RubiksCube"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <SolidColorBrush x:Key="BackgroundColor" Color="#eceded" />
+        <SolidColorBrush x:Key="MenuButtonBackgroundColor" Color="#abb5bc" />
+        <SolidColorBrush x:Key="MenuButtonForegroundColor" Color="#2f3b42" />
+        <SolidColorBrush x:Key="MenuButtonHoverColor" Color="#8998a2" />
+
+        <ImageBrush x:Key="GridBackground" ImageSource="Images/rubikscube.png" Opacity="0.1" TileMode="FlipXY"  Stretch="Uniform" AlignmentY="Top" Viewport="0,0,40,40" ViewportUnits="Absolute"/>
+
+
+
         <Style TargetType="Rectangle">
             <Setter Property="Margin" Value="1"/>
             <Setter Property="Stroke" Value="Black"/>
         </Style>
         <Style x:Key="MoveButton" TargetType="Button">
-            <Setter Property="Background" Value="#FF1B1A21"/>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="{StaticResource MenuButtonBackgroundColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource MenuButtonForegroundColor}"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Height" Value="50"/>
@@ -29,7 +39,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF403E4D"/>
+                    <Setter Property="Background" Value="{StaticResource MenuButtonHoverColor}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
