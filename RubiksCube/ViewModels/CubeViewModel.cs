@@ -30,7 +30,7 @@ namespace RubiksCube.ViewModels
         public ICommand RotateClockwiseCommand { get; private set; }
         public ICommand RotateCounterClockwiseCommand { get; private set; }
 
-        public ObservableCollection<string> Moves;
+        public ObservableCollection<string> MovesDone;
 
         public Cube RubiksCube
         {
@@ -50,7 +50,7 @@ namespace RubiksCube.ViewModels
         {
             _rubiksCube = new Cube();
 
-            Moves = new ObservableCollection<string>();
+            MovesDone = new ObservableCollection<string>();
 
             RotateClockwiseCommand = new RelayCommand(RotateClockwise);
             RotateCounterClockwiseCommand = new RelayCommand(RotateCounterClockwise);

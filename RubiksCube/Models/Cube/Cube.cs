@@ -96,6 +96,11 @@ namespace RubiksCube.Models
             }
         }
 
+        public IEnumerable<String> Dump()
+        {
+
+        }
+
         #endregion
 
         #region Private Methods

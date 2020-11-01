@@ -10,116 +10,158 @@
         MinHeight="720" MinWidth="1280" 
         Background="{StaticResource BackgroundColor}" 
         ResizeMode="CanResizeWithGrip" 
-        WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid Background="{StaticResource GridBackground}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
-        </Grid.RowDefinitions>
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        FontFamily="Century Gothic">
+    <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[0]}" Grid.Column="4" Grid.Row="1"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[1]}" Grid.Column="5" Grid.Row="1"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[2]}" Grid.Column="6" Grid.Row="1"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[3]}" Grid.Column="4" Grid.Row="2"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[4]}" Grid.Column="5" Grid.Row="2"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[5]}" Grid.Column="6" Grid.Row="2"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[6]}" Grid.Column="4" Grid.Row="3"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[7]}" Grid.Column="5" Grid.Row="3"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[8]}" Grid.Column="6" Grid.Row="3"/>
-
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[0]}" Grid.Column="1" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[1]}" Grid.Column="2" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[2]}" Grid.Column="3" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[3]}" Grid.Column="1" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[4]}" Grid.Column="2" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[5]}" Grid.Column="3" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[6]}" Grid.Column="1" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[7]}" Grid.Column="2" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[8]}" Grid.Column="3" Grid.Row="6"/>
-
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[0]}" Grid.Column="4" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[1]}" Grid.Column="5" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[2]}" Grid.Column="6" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[3]}" Grid.Column="4" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[4]}" Grid.Column="5" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[5]}" Grid.Column="6" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[6]}" Grid.Column="4" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[7]}" Grid.Column="5" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[8]}" Grid.Column="6" Grid.Row="6"/>
-
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[0]}" Grid.Column="7" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[1]}" Grid.Column="8" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[2]}" Grid.Column="9" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[3]}" Grid.Column="7" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[4]}" Grid.Column="8" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[5]}" Grid.Column="9" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[6]}" Grid.Column="7" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[7]}" Grid.Column="8" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[8]}" Grid.Column="9" Grid.Row="6"/>
-
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[0]}" Grid.Column="10" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[1]}" Grid.Column="11" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[2]}" Grid.Column="12" Grid.Row="4"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[3]}" Grid.Column="10" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[4]}" Grid.Column="11" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[5]}" Grid.Column="12" Grid.Row="5"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[6]}" Grid.Column="10" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[7]}" Grid.Column="11" Grid.Row="6"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[8]}" Grid.Column="12" Grid.Row="6"/>
-
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[0]}" Grid.Column="4" Grid.Row="7"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[1]}" Grid.Column="5" Grid.Row="7"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[2]}" Grid.Column="6" Grid.Row="7"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[3]}" Grid.Column="4" Grid.Row="8"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[4]}" Grid.Column="5" Grid.Row="8"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[5]}" Grid.Column="6" Grid.Row="8"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[6]}" Grid.Column="4" Grid.Row="9"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[7]}" Grid.Column="5" Grid.Row="9"/>
-        <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[8]}" Grid.Column="6" Grid.Row="9"/>
-
-        <StackPanel Grid.Column="13" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}">
-                <Image Source="Images/minimize.png"/>
-            </Button>
-            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}">
-                <Image Source="Images/fullscreen.png"/>
-            </Button>
-            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}">
-                <Image Source="Images/clear.png"/>
-            </Button>
-        </StackPanel>
-
-        <GroupBox Grid.Column="13" Grid.Row="1" Header="Test" Grid.RowSpan="4" FontSize="40">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="L" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Left}"/>
-                <Button Content="L'" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Left}"/>
-            </StackPanel>
-        </GroupBox>
         
+        <Viewbox Stretch="Uniform" HorizontalAlignment="Left" Margin="50 0 50 0" VerticalAlignment="Center" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[0]}" Grid.Column="4" Grid.Row="1"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[1]}" Grid.Column="5" Grid.Row="1"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[2]}" Grid.Column="6" Grid.Row="1"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[3]}" Grid.Column="4" Grid.Row="2"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[4]}" Grid.Column="5" Grid.Row="2"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[5]}" Grid.Column="6" Grid.Row="2"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[6]}" Grid.Column="4" Grid.Row="3"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[7]}" Grid.Column="5" Grid.Row="3"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[0].Cells[8]}" Grid.Column="6" Grid.Row="3"/>
+
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[0]}" Grid.Column="1" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[1]}" Grid.Column="2" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[2]}" Grid.Column="3" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[3]}" Grid.Column="1" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[4]}" Grid.Column="2" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[5]}" Grid.Column="3" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[6]}" Grid.Column="1" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[7]}" Grid.Column="2" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[1].Cells[8]}" Grid.Column="3" Grid.Row="6"/>
+
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[0]}" Grid.Column="4" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[1]}" Grid.Column="5" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[2]}" Grid.Column="6" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[3]}" Grid.Column="4" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[4]}" Grid.Column="5" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[5]}" Grid.Column="6" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[6]}" Grid.Column="4" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[7]}" Grid.Column="5" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[2].Cells[8]}" Grid.Column="6" Grid.Row="6"/>
+
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[0]}" Grid.Column="7" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[1]}" Grid.Column="8" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[2]}" Grid.Column="9" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[3]}" Grid.Column="7" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[4]}" Grid.Column="8" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[5]}" Grid.Column="9" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[6]}" Grid.Column="7" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[7]}" Grid.Column="8" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[3].Cells[8]}" Grid.Column="9" Grid.Row="6"/>
+
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[0]}" Grid.Column="10" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[1]}" Grid.Column="11" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[2]}" Grid.Column="12" Grid.Row="4"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[3]}" Grid.Column="10" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[4]}" Grid.Column="11" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[5]}" Grid.Column="12" Grid.Row="5"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[6]}" Grid.Column="10" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[7]}" Grid.Column="11" Grid.Row="6"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[4].Cells[8]}" Grid.Column="12" Grid.Row="6"/>
+
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[0]}" Grid.Column="4" Grid.Row="7"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[1]}" Grid.Column="5" Grid.Row="7"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[2]}" Grid.Column="6" Grid.Row="7"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[3]}" Grid.Column="4" Grid.Row="8"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[4]}" Grid.Column="5" Grid.Row="8"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[5]}" Grid.Column="6" Grid.Row="8"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[6]}" Grid.Column="4" Grid.Row="9"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[7]}" Grid.Column="5" Grid.Row="9"/>
+                <Rectangle Fill="{Binding RubiksCube.Sides[5].Cells[8]}" Grid.Column="6" Grid.Row="9"/>
+            </Grid>
+        </Viewbox>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}">
+                    <Image Source="Images/minimize.png"/>
+                </Button>
+                <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}">
+                    <Image Source="Images/fullscreen.png"/>
+                </Button>
+                <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}">
+                    <Image Source="Images/clear.png"/>
+                </Button>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0 30 0 0" HorizontalAlignment="Center" Text="Moves" FontSize="30" Foreground="{StaticResource MenuButtonForegroundColor}"/>
+
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 90 0 0" Orientation="Vertical" HorizontalAlignment="Center">
+                <Button Content="U" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Top}"/>
+                <Button Content="L" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Left}"/>
+                <Button Content="F" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Front}"/>
+                <Button Content="R" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Right}"/>
+                <Button Content="B" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Back}"/>
+                <Button Content="D" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Down}"/>
+                <Button Content="Save" Margin="10 30 10 10" Width="125" Style="{StaticResource MoveButton}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="0 90 0 0" Orientation="Vertical" HorizontalAlignment="Center">
+                <Button Content="U'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Top}"/>
+                <Button Content="L'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Left}"/>
+                <Button Content="F'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Front}"/>
+                <Button Content="R'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Right}"/>
+                <Button Content="B'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Back}"/>
+                <Button Content="D'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Down}"/>
+                <Button Content="Load" Margin="10 30 10 10" Width="125" Style="{StaticResource MoveButton}"/>
+            </StackPanel>
+
+            <RichTextBox x:Name="rtbMovesDone" Grid.Column="0" Grid.Row="2" Margin="20 30 20 0" Grid.ColumnSpan="2" FontSize="20" Background="{StaticResource MenuButtonBackgroundColor}"/>
+
+        </Grid>
     </Grid>
 </Window>

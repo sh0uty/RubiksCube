@@ -5,32 +5,34 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
 
-        <SolidColorBrush x:Key="BackgroundColor" Color="#eceded" />
-        <SolidColorBrush x:Key="MenuButtonBackgroundColor" Color="#abb5bc" />
-        <SolidColorBrush x:Key="MenuButtonForegroundColor" Color="#2f3b42" />
-        <SolidColorBrush x:Key="MenuButtonHoverColor" Color="#8998a2" />
+        <SolidColorBrush x:Key="BackgroundColor" Color="#222f3e" />
+        <SolidColorBrush x:Key="MenuButtonBackgroundColor" Color="#01a3a4" />
+        <SolidColorBrush x:Key="MenuButtonForegroundColor" Color="#c8d6e5" />
+        <SolidColorBrush x:Key="MenuButtonHoverColor" Color="#341f97" />
 
-        <ImageBrush x:Key="GridBackground" ImageSource="Images/rubikscube.png" Opacity="0.1" TileMode="FlipXY"  Stretch="Uniform" AlignmentY="Top" Viewport="0,0,40,40" ViewportUnits="Absolute"/>
-
-
+        <ImageBrush x:Key="GridBackground"  ImageSource="Images/rubikscube.png" Opacity="0.05" TileMode="FlipXY" Viewport="0 0 100 100" ViewportUnits="Absolute"/>
 
         <Style TargetType="Rectangle">
             <Setter Property="Margin" Value="1"/>
+            <Setter Property="StrokeThickness" Value="0.5"/>
             <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="20"/>
         </Style>
+        
         <Style x:Key="MoveButton" TargetType="Button">
             <Setter Property="Background" Value="{StaticResource MenuButtonBackgroundColor}"/>
             <Setter Property="Foreground" Value="{StaticResource MenuButtonForegroundColor}"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Width" Value="100"/>
             <Setter Property="Margin" Value="10 0"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="45" Background="{TemplateBinding Foreground}" BorderThickness="1">
-                            <Border CornerRadius="45" Background="{TemplateBinding Background}" BorderThickness="4">
+                        <Border CornerRadius="10" Background="{TemplateBinding Foreground}" BorderThickness="1">
+                            <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderThickness="2">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </Border>
@@ -43,5 +45,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
     </Application.Resources>
 </Application>
