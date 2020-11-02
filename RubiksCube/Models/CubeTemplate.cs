@@ -1,22 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace RubiksCube.Models
 {
+    [Serializable]
     public class CubeTemplate
     {
-        List<String> CubeColors;
-
-
-        public CubeTemplate()
-        {
-            CubeColors = new List<string>();
-        }
-
-        public CubeTemplate(Cube cube)
-        {
-            CubeColors = cube.Dump().ToList();
-        }
+        public List<String> CubeColors;
     }
 }

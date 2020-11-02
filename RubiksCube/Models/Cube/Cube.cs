@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace RubiksCube.Models
 {
@@ -98,7 +96,13 @@ namespace RubiksCube.Models
 
         public IEnumerable<String> Dump()
         {
-
+            foreach(Side s in Sides)
+            {
+                foreach(String col in s.Cells)
+                {
+                    yield return col;
+                }
+            }
         }
 
         #endregion
