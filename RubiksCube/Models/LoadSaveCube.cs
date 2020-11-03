@@ -9,7 +9,7 @@ namespace RubiksCube.Models
 {
     public class LoadSaveCube
     {
-        #region Public Members
+        #region Public Static Methods
         public static void SaveCubeToFile(Cube cube, string filename)
         {
             CubeTemplate cubeTemplate = new CubeTemplate();

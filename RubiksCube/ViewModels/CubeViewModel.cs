@@ -152,7 +152,6 @@ namespace RubiksCube.ViewModels
 
         private string GetNotation(Orientation orientation, Operation operation)
         {
-
             string notation;
 
             switch (orientation)
