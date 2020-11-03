@@ -161,7 +161,7 @@
                 <Button Content="Load" Margin="10 30 10 10" Width="125" Style="{StaticResource MoveButton}" Command="{Binding LoadCubeCommand}"/>
             </StackPanel>
 
-            <RichTextBox x:Name="rtbMovesDone" Grid.Column="0" Grid.Row="2" Margin="20 30 20 0" Grid.ColumnSpan="2" FontSize="20" Background="{StaticResource MenuButtonBackgroundColor}"/>
+            <ListBox ItemsSource="{Binding MovesDone}" Grid.Column="0" Grid.Row="2" Margin="20 30 20 0" Grid.ColumnSpan="2" FontSize="20" Background="{StaticResource MenuButtonBackgroundColor}"/>
 
         </Grid>
     </Grid>

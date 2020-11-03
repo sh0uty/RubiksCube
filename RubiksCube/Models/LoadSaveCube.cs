@@ -9,6 +9,7 @@ namespace RubiksCube.Models
 {
     public class LoadSaveCube
     {
+        #region Public Members
         public static void SaveCubeToFile(Cube cube, string filename)
         {
             CubeTemplate cubeTemplate = new CubeTemplate();
@@ -43,11 +44,11 @@ namespace RubiksCube.Models
                     sides[i] = new Side();
                 }
 
-                for(int i = 0; i < sides.Length; i++)
+                for(int i = 0; i < 6; i++)
                 {
-                    for(int j = 0; j < sides[i].Cells.Length; j++)
+                    for(int j = 0; j < 9; j++)
                     {
-                        sides[i].Cells[j] = cubeTemplate.CubeColors[(9 * i) + j];
+                        sides[i].Cells.Add(cubeTemplate.CubeColors[(9 * i) + j]);
                     }
                 }
 
@@ -56,5 +57,7 @@ namespace RubiksCube.Models
             }
 
         }
+
+        #endregion
     }
 }

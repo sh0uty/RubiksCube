@@ -28,6 +28,8 @@ namespace RubiksCube.ViewModels
 
         private WindowState _CurWindowState;
 
+        private ObservableCollection<String> _MovesDone;
+
         #endregion
 
         #region Public Members
@@ -40,7 +42,15 @@ namespace RubiksCube.ViewModels
         public ICommand MinimizeWindowCommand { get; private set; }
         public ICommand FullscreenWindowCommand { get; private set; }
 
-        public ObservableCollection<string> MovesDone;
+        public ObservableCollection<String> MovesDone
+        {
+            get { return _MovesDone; }
+            set
+            {
+                _MovesDone.Add(value.ToString());
+                OnPropertyChanged("MovesDone");
+            }
+        }
 
         public Cube RubiksCube
         {
@@ -49,6 +59,7 @@ namespace RubiksCube.ViewModels
                 if (_rubiksCube == value) 
                     return;
                 _rubiksCube = value;
+                OnPropertyChanged("RubiksCube");
             }
         }
 
@@ -69,8 +80,7 @@ namespace RubiksCube.ViewModels
         public CubeViewModel()
         {
             _rubiksCube = new Cube();
-
-            MovesDone = new ObservableCollection<string>();
+            _MovesDone = new ObservableCollection<string>();
 
             RotateClockwiseCommand = new RelayCommand(RotateClockwise);
             RotateCounterClockwiseCommand = new RelayCommand(RotateCounterClockwise);
@@ -84,19 +94,18 @@ namespace RubiksCube.ViewModels
 
         #endregion
 
-
         #region Command Functions
 
         private void RotateClockwise(object parameter)
         {
             RubiksCube.Rotate((Orientation)parameter, Operation.Clockwise);
-            OnPropertyChanged("RubiksCube");
+            MovesDone.Add(GetNotation((Orientation)parameter, Operation.Clockwise));
         }
 
         private void RotateCounterClockwise(object parameter)
         {
             RubiksCube.Rotate((Orientation)parameter, Operation.CounterClockwise);
-            OnPropertyChanged("RubiksCube");
+            MovesDone.Add(GetNotation((Orientation)parameter, Operation.CounterClockwise));
         }
 
         private void LoadCube(object parameter)
@@ -106,8 +115,7 @@ namespace RubiksCube.ViewModels
             if (openFileDialog.ShowDialog() == true)
             {
                 RubiksCube = LoadSaveCube.LoadCubeFromFile(openFileDialog.FileName);
-                OnPropertyChanged("RubiksCube");
-            }
+                _MovesDone.Clear();            }
         }
 
         private void SaveCube(object parameter)
@@ -136,6 +144,50 @@ namespace RubiksCube.ViewModels
                 CurWindowState = WindowState.Maximized;
             else
                 CurWindowState = WindowState.Normal;
+        }
+
+        #endregion
+
+        #region Helper Functions
+
+        private string GetNotation(Orientation orientation, Operation operation)
+        {
+
+            string notation;
+
+            switch (orientation)
+            {
+
+                case Orientation.Top:
+                    notation = "U";
+                    break;
+                case Orientation.Left:
+                    notation = "L";
+                    break;
+                case Orientation.Front:
+                    notation = "U";
+                    break;
+                case Orientation.Right:
+                    notation = "R";
+                    break;
+                case Orientation.Back:
+                    notation = "B";
+                    break;
+                case Orientation.Down:
+                    notation = "D";
+                    break;
+
+                default:
+                    notation = "";
+                    break;
+            }
+
+            if (operation == Operation.Clockwise)
+                notation += " ";
+            else
+                notation += "' ";
+
+            return notation;
         }
 
         #endregion

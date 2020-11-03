@@ -1,4 +1,9 @@
-﻿namespace RubiksCube.Models
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System;
+
+namespace RubiksCube.Models
 {
 
     #region Enums
@@ -20,15 +25,32 @@
 
     #endregion
 
-    public class Side
+    public class Side : INotifyPropertyChanged
     {
+        #region Events
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string fullpath = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(fullpath));
+        }
+
+        #endregion
+
+
         #region Public Members
 
-        string[] _cells;
+        ObservableCollection<String> _cells;
 
-        public string[] Cells
+        public ObservableCollection<String> Cells
         {
-            get { return this._cells; }
+            get { return _cells; }
+            set
+            {
+                _cells.Add(value.ToString());
+                OnPropertyChanged("Cells");
+            }
         }
 
         #endregion
@@ -37,14 +59,14 @@
 
         public Side()
         {
-            _cells = new string[9];
+            _cells = new ObservableCollection<String>();
         }
 
         public Side(string color)
         {
-            _cells = new string[9];
-            for (int i = 0; i < _cells.Length; i++)
-                _cells[i] = color;
+            _cells = new ObservableCollection<String>();
+            for (int i = 0; i < 9; i++)
+                _cells.Add(color);
 
         }
 
