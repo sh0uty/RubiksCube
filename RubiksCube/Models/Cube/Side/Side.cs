@@ -31,15 +31,17 @@
             get { return this._cells; }
         }
 
-        public Orientation Orientation { get; private set; }
-
         #endregion
 
         #region Constructors
-        public Side(string color, Orientation orientation)
-        {
-            this.Orientation = orientation;
 
+        public Side()
+        {
+            _cells = new string[9];
+        }
+
+        public Side(string color)
+        {
             _cells = new string[9];
             for (int i = 0; i < _cells.Length; i++)
                 _cells[i] = color;

@@ -1,7 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows;
 
 namespace RubiksCube.Models
 {
@@ -18,13 +20,41 @@ namespace RubiksCube.Models
                 formatter.Serialize(stream, cubeTemplate);
         }
 
-        public static void LoadCubeFromFile(string filename)
+        public static Cube LoadCubeFromFile(string filename)
         {
             IFormatter formatter = new BinaryFormatter();
             using (Stream stream = new FileStream(filename, FileMode.Open, FileAccess.Read))
             {
-                CubeTemplate cubeTemplate = (CubeTemplate)formatter.Deserialize(stream);
+                CubeTemplate cubeTemplate;
+                try
+                {
+                    cubeTemplate = (CubeTemplate)formatter.Deserialize(stream);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButton.OK);
+                    return new Cube();
+                }
+
+                Side[] sides = new Side[6];
+
+                for(int i = 0; i < sides.Length; i++)
+                {
+                    sides[i] = new Side();
+                }
+
+                for(int i = 0; i < sides.Length; i++)
+                {
+                    for(int j = 0; j < sides[i].Cells.Length; j++)
+                    {
+                        sides[i].Cells[j] = cubeTemplate.CubeColors[(9 * i) + j];
+                    }
+                }
+
+                return new Cube(sides);
+
             }
+
         }
     }
 }

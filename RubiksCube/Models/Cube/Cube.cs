@@ -44,8 +44,14 @@ namespace RubiksCube.Models
 
             for(int i = 0; i < _sides.Length; i++)
             {
-                _sides[i] = new Side(Colors[i], (Orientation)i);
+                _sides[i] = new Side(Colors[i]);
             }
+        }
+
+        public Cube(Side[] sides)
+        {
+            _sides = sides.ToArray();
+            random = new Random();
         }
 
         #endregion
@@ -87,8 +93,6 @@ namespace RubiksCube.Models
             {
                 orientation = (Orientation)random.Next(6);
                 operation = (Operation)random.Next(2);
-
-                Debug.WriteLine(String.Format("{0} : {1}", orientation, operation));
 
                 Rotate(orientation, operation);
             }
