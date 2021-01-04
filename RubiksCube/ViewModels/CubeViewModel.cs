@@ -28,8 +28,6 @@ namespace RubiksCube.ViewModels
 
         private WindowState _CurWindowState;
 
-        private ObservableCollection<String> _MovesDone;
-
         #endregion
 
         #region Public Members
@@ -41,16 +39,6 @@ namespace RubiksCube.ViewModels
         public ICommand CloseWindowCommand { get; private set; }
         public ICommand MinimizeWindowCommand { get; private set; }
         public ICommand FullscreenWindowCommand { get; private set; }
-
-        public ObservableCollection<String> MovesDone
-        {
-            get { return _MovesDone; }
-            set
-            {
-                _MovesDone.Add(value.ToString());
-                OnPropertyChanged("MovesDone");
-            }
-        }
 
         public Cube RubiksCube
         {
@@ -80,7 +68,6 @@ namespace RubiksCube.ViewModels
         public CubeViewModel()
         {
             _rubiksCube = new Cube();
-            _MovesDone = new ObservableCollection<string>();
 
             RotateClockwiseCommand = new RelayCommand(RotateClockwise);
             RotateCounterClockwiseCommand = new RelayCommand(RotateCounterClockwise);
@@ -99,13 +86,11 @@ namespace RubiksCube.ViewModels
         private void RotateClockwise(object parameter)
         {
             RubiksCube.Rotate((Orientation)parameter, Operation.Clockwise);
-            MovesDone.Add(GetNotation((Orientation)parameter, Operation.Clockwise));
         }
 
         private void RotateCounterClockwise(object parameter)
         {
             RubiksCube.Rotate((Orientation)parameter, Operation.CounterClockwise);
-            MovesDone.Add(GetNotation((Orientation)parameter, Operation.CounterClockwise));
         }
 
         private void LoadCube(object parameter)
@@ -115,7 +100,7 @@ namespace RubiksCube.ViewModels
             if (openFileDialog.ShowDialog() == true)
             {
                 RubiksCube = LoadSaveCube.LoadCubeFromFile(openFileDialog.FileName);
-                _MovesDone.Clear();            }
+            }
         }
 
         private void SaveCube(object parameter)

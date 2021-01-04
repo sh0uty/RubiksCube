@@ -41,7 +41,7 @@ namespace RubiksCube.Models
 
         #region Public Members
 
-        ObservableCollection<String> _cells;
+        private ObservableCollection<String> _cells;
 
         public ObservableCollection<String> Cells
         {
