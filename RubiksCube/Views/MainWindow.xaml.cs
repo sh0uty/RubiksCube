@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using RubiksCube.ViewModels;
 
-namespace RubiksCube
+namespace RubiksCube.Views
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
