@@ -15,6 +15,16 @@ namespace RubiksCube.Models
             get { return _sides; }
         }
 
+        public int[,] RotationMatrix = new int[,]
+        {
+            { 38, 37, 36, 29, 28, 27, 20, 19, 18, 11, 10, 9 },
+            { 18, 21, 24, 45, 48, 51, 44, 41, 38, 0, 3, 6},
+            { 6, 7, 8, 27, 30, 33, 47, 46, 45, 17, 14, 11 },
+            { 8, 5, 2, 36, 39, 42, 53, 50, 47, 26, 23, 20 },
+            { 2, 1, 0, 9, 12, 15, 51, 52, 53, 35, 32, 29 },
+            { 15, 16, 17, 24, 25, 26, 33, 34, 35, 42, 43, 44 }
+        };
+
         #endregion
 
         #region Privte Members
@@ -62,22 +72,22 @@ namespace RubiksCube.Models
             switch (orientation)
             {
                 case Orientation.Top:
-                    Manipulate(new int[] { 38, 37, 36, 29, 28, 27, 20, 19, 18, 11, 10, 9 }, orientation, operation);
+                    Manipulate(GetRow(RotationMatrix, 0), orientation, operation);
                     break;
                 case Orientation.Left:
-                    Manipulate(new int[] { 18, 21, 24, 45, 48, 51, 44, 41, 38, 0, 3, 6}, orientation, operation);
+                    Manipulate(GetRow(RotationMatrix, 1), orientation, operation);
                     break;
                 case Orientation.Front:
-                    Manipulate(new int[] { 6, 7, 8, 27, 30, 33, 47, 46, 45, 17, 14, 11 }, orientation, operation);
+                    Manipulate(GetRow(RotationMatrix, 2), orientation, operation);
                     break;
                 case Orientation.Right:
-                    Manipulate(new int[] { 8, 5, 2, 36, 39, 42, 53, 50, 47, 26, 23, 20 }, orientation, operation);
+                    Manipulate(GetRow(RotationMatrix, 3), orientation, operation);
                     break;
                 case Orientation.Back:
-                    Manipulate(new int[] { 2, 1, 0, 9, 12, 15, 51, 52, 53, 35, 32, 29 }, orientation, operation);
+                    Manipulate(GetRow(RotationMatrix, 4), orientation, operation);
                     break;
                 case Orientation.Down:
-                    Manipulate(new int[] { 15, 16, 17, 24, 25, 26, 33, 34, 35, 42, 43, 44 }, orientation, operation);
+                    Manipulate(GetRow(RotationMatrix, 5), orientation, operation);
                     break;
                 default: break;
             }
@@ -168,6 +178,14 @@ namespace RubiksCube.Models
 
             RotateOrientationSide(orientation, operation);
         }
+
+        public int[] GetRow(int[,] matrix, int rowNumber)
+        {
+            return Enumerable.Range(0, matrix.GetLength(1))
+                    .Select(x => matrix[rowNumber, x])
+                    .ToArray();
+        }
+
         #endregion
     }
 }
