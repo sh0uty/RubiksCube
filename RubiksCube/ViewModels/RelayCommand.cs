@@ -4,6 +4,7 @@ using System.Windows.Input;
 
 namespace RubiksCube.ViewModels
 {
+    //Mithilfe dieser Klasse wird aus einer Funktion ein ICommand sodass man diese mit den Buttons verbinden kann
     class RelayCommand : ICommand
     {
         #region Events
@@ -18,7 +19,10 @@ namespace RubiksCube.ViewModels
 
         #region Private Members
 
+        //Funktion die an einen Button gebunden werden soll
         private readonly Action<object> Action;
+
+        //Funktion die überorüft ob die Action ausgeführt werden kann
         private readonly Predicate<object> Predicate;
 
         #endregion
@@ -37,12 +41,13 @@ namespace RubiksCube.ViewModels
 
         #region Public Methods
 
-
+        //Prüft ob die Action ausgeführt werden kann
         public bool CanExecute(object parameter)
         {
             return Predicate == null || Predicate(parameter);
         }
 
+        //Führt die Action aus
         public void Execute(object parameter)
         {
             Action.Invoke(parameter);

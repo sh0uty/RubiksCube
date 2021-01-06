@@ -6,27 +6,9 @@ using System;
 namespace RubiksCube.Models
 {
 
-    #region Enums
-    public enum Operation
-    {
-        CounterClockwise = 0,
-        Clockwise = 1
-    }
-
-    public enum Orientation
-    {
-        Top,
-        Left,
-        Front,
-        Right,
-        Back,
-        Down
-    }
-
-    #endregion
-
     public class Side : INotifyPropertyChanged
     {
+
         #region Events
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -38,9 +20,8 @@ namespace RubiksCube.Models
 
         #endregion
 
-
         #region Public Members
-
+        //Liste der 9 Farben pro Seite
         private ObservableCollection<String> _cells;
 
         public ObservableCollection<String> Cells
@@ -57,11 +38,13 @@ namespace RubiksCube.Models
 
         #region Constructors
 
+        //Leere Seite
         public Side()
         {
             _cells = new ObservableCollection<String>();
         }
 
+        //Seite mit bestimmten Farben
         public Side(string color)
         {
             _cells = new ObservableCollection<String>();

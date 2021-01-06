@@ -10,6 +10,8 @@ namespace RubiksCube.Models
     public class LoadSaveCube
     {
         #region Public Static Methods
+
+        //Speichern eines Würfels eine Datei mithilfe der Funktion Serialize eines IFormatter
         public static void SaveCubeToFile(Cube cube, string filename)
         {
             CubeTemplate cubeTemplate = new CubeTemplate();
@@ -21,6 +23,7 @@ namespace RubiksCube.Models
                 formatter.Serialize(stream, cubeTemplate);
         }
 
+        //Laden eines Würfels aus einer Datei mithilfe der Funktion Deserialize eines IFormatter
         public static Cube LoadCubeFromFile(string filename)
         {
             IFormatter formatter = new BinaryFormatter();

@@ -32,6 +32,7 @@ namespace RubiksCube.ViewModels
 
         #region Public Members
 
+        //ICommands für die Buttons
         public ICommand RotateClockwiseCommand { get; private set; }
         public ICommand RotateCounterClockwiseCommand { get; private set; }
         public ICommand SaveCubeCommand { get; private set; }
@@ -39,6 +40,7 @@ namespace RubiksCube.ViewModels
         public ICommand CloseWindowCommand { get; private set; }
         public ICommand MinimizeWindowCommand { get; private set; }
         public ICommand FullscreenWindowCommand { get; private set; }
+        public ICommand RandomizeCommand { get; private set; }
 
         public Cube RubiksCube
         {
@@ -65,6 +67,7 @@ namespace RubiksCube.ViewModels
 
         #region Constructors
 
+        //Initialisiert alle ICommands und erstellt einen gelösten Würfel
         public CubeViewModel()
         {
             _rubiksCube = new Cube();
@@ -76,12 +79,15 @@ namespace RubiksCube.ViewModels
             CloseWindowCommand = new RelayCommand(CloseWindow);
             MinimizeWindowCommand = new RelayCommand(MinimizeWindow);
             FullscreenWindowCommand = new RelayCommand(FullscreenWindow);
+            RandomizeCommand = new RelayCommand(Randomize);
 
         }
 
         #endregion
 
         #region Command Functions
+
+        //Hier befinden sich alle Funktionen die mit den Buttons ausgelöst werden
 
         private void RotateClockwise(object parameter)
         {
@@ -93,6 +99,7 @@ namespace RubiksCube.ViewModels
             RubiksCube.Rotate((Orientation)parameter, Operation.CounterClockwise);
         }
 
+        //Lädt einen Würfel aus einer gespeicherten Datei
         private void LoadCube(object parameter)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -103,6 +110,7 @@ namespace RubiksCube.ViewModels
             }
         }
 
+        //Speichert einen Würfel und erstellt eine Datei dafür
         private void SaveCube(object parameter)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -131,47 +139,9 @@ namespace RubiksCube.ViewModels
                 CurWindowState = WindowState.Normal;
         }
 
-        #endregion
-
-        #region Helper Functions
-
-        private string GetNotation(Orientation orientation, Operation operation)
+        private void Randomize(object Parameter)
         {
-            string notation;
-
-            switch (orientation)
-            {
-
-                case Orientation.Top:
-                    notation = "U";
-                    break;
-                case Orientation.Left:
-                    notation = "L";
-                    break;
-                case Orientation.Front:
-                    notation = "U";
-                    break;
-                case Orientation.Right:
-                    notation = "R";
-                    break;
-                case Orientation.Back:
-                    notation = "B";
-                    break;
-                case Orientation.Down:
-                    notation = "D";
-                    break;
-
-                default:
-                    notation = "";
-                    break;
-            }
-
-            if (operation == Operation.Clockwise)
-                notation += " ";
-            else
-                notation += "' ";
-
-            return notation;
+            _rubiksCube.Randomize(20);
         }
 
         #endregion

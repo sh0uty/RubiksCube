@@ -160,6 +160,7 @@
                 <Button Content="B'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Back}"/>
                 <Button Content="D'" Margin="10" Style="{StaticResource MoveButton}" Command="{Binding RotateCounterClockwiseCommand}" CommandParameter="{x:Static models:Orientation.Down}"/>
                 <Button Content="Load" Margin="10 30 10 10" Width="125" Style="{StaticResource MoveButton}" Command="{Binding LoadCubeCommand}"/>
+                <Button Content="Randomize" Margin="10" Width="125" Style="{StaticResource MoveButton}" Command="{Binding RandomizeCommand}"/>
             </StackPanel>
         </Grid>
     </Grid>

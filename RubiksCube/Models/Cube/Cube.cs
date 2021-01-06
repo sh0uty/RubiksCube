@@ -1,20 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace RubiksCube.Models
 {
+
+    #region Enums
+    public enum Operation
+    {
+        CounterClockwise = 0,
+        Clockwise = 1
+    }
+
+    public enum Orientation
+    {
+        Top,
+        Left,
+        Front,
+        Right,
+        Back,
+        Down
+    }
+
+    #endregion
+
     public class Cube
     {
         #region Public Members
-
-        Side[] _sides;
 
         public Side[] Sides
         {
             get { return _sides; }
         }
 
+        /* Matrix zum rotieren der Seiten anhand der Position der Farben
+        
+        #  #  #  | 0  1  2  |  #  #  #   #  #  #
+        #  #  #  | 3  4  5  |  #  #  #   #  #  #
+        #  #  #  | 6  7  8  |  #  #  #   #  #  #
+        -----------------------------------------
+        9  10 11 | 18 19 20 | 27 28 29 | 36 37 38 
+        12 13 14 | 21 22 23 | 30 31 32 | 29 40 41
+        15 16 17 | 24 25 26 | 33 34 35 | 42 43 44
+        -----------------------------------------
+        #  #  #  | 45 46 47 |  #  #  #    #  #  #
+        #  #  #  | 48 49 50 |  #  #  #    #  #  #
+        #  #  #  | 51 52 53 |  #  #  #    #  #  #
+         */
         public int[,] RotationMatrix = new int[,]
         {
             { 38, 37, 36, 29, 28, 27, 20, 19, 18, 11, 10, 9 },
@@ -29,10 +62,14 @@ namespace RubiksCube.Models
 
         #region Privte Members
 
+        private Side[] _sides;
+
+        //Reihenfolge einer Seite die eine Rotation als Kreis ermöglicht
         private int[] SideRotationIndexes = new int[] { 0, 1, 2, 5, 8, 7, 6, 3 };
 
         private Random random;
 
+        //Seitenfarben des Würfels
         private string[] Colors = new string[6]
         {
             "Blue",
@@ -46,6 +83,7 @@ namespace RubiksCube.Models
         #endregion
 
         #region Constructors
+        //Neuen Würfel erstellen mit vordefinierten Farben (Würfel ist gelöst)
         public Cube()
         {
             _sides = new Side[6];
@@ -57,6 +95,7 @@ namespace RubiksCube.Models
             }
         }
 
+        //Würfel erstellen mit vordefinierten Seiten
         public Cube(Side[] sides)
         {
             _sides = sides.ToArray();
@@ -67,6 +106,7 @@ namespace RubiksCube.Models
 
         #region Public Methods
 
+        //Seite drehen mithilfe der Seite und Richtung
         public void Rotate(Orientation orientation, Operation operation)
         { 
             switch (orientation)
@@ -93,20 +133,37 @@ namespace RubiksCube.Models
             }
         }
 
+        //Zufällige Seitenrotationen
         public void Randomize(int moves)
         {
-            Orientation orientation;
-            Operation operation;
+            Orientation orientation, preOr = 0;
+            Operation operation, preOp = 0;
 
-            for(int i = 0; i < moves; i++)
+            for (int i = 0; i < moves; i++)
             {
                 orientation = (Orientation)random.Next(6);
                 operation = (Operation)random.Next(2);
 
+                if (i != 0)
+                {
+                    if (orientation == preOr)
+                    {
+                        if (operation != preOp)
+                        {
+                            i--;
+                            continue;
+                        }
+                    }
+                }
+
                 Rotate(orientation, operation);
+
+                preOr = orientation;
+                preOp = operation;
             }
         }
 
+        //Gibt alle farben in Reihenfolge zurück und macht ein IEnumerable raus
         public IEnumerable<String> Dump()
         {
             foreach(Side s in Sides)
@@ -132,6 +189,7 @@ namespace RubiksCube.Models
             Sides[cell / 9].Cells[cell % 9] = color;
         }
 
+        //Funktion die die 9 Farben einer Seite im kreis dreht
         private void RotateOrientationSide(Orientation orientation, Operation operation)
         {
             List<int> Positions = new List<int>();
@@ -155,6 +213,7 @@ namespace RubiksCube.Models
             Positions.ForEach(pos => SetColorFromCell((int)orientation * 9 + pos, Colors.Dequeue()));
         }
 
+        //Manipuliert die Reihenfolge der Strings in einem übergebenen Array
         private void Manipulate(int[] cells, Orientation orientation, Operation operation)
         {
             Queue<string> Colors = new Queue<string>();
@@ -179,6 +238,7 @@ namespace RubiksCube.Models
             RotateOrientationSide(orientation, operation);
         }
 
+        //Gibst die n-te Reihe eines 2-dimensionalen Arrays als Array wieder
         public int[] GetRow(int[,] matrix, int rowNumber)
         {
             return Enumerable.Range(0, matrix.GetLength(1))
