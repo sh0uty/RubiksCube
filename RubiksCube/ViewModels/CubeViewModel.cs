@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -32,7 +31,7 @@ namespace RubiksCube.ViewModels
 
         #region Public Members
 
-        //ICommands für die Buttons
+        //ICommand Objekte für die Buttons
         public ICommand RotateClockwiseCommand { get; private set; }
         public ICommand RotateCounterClockwiseCommand { get; private set; }
         public ICommand SaveCubeCommand { get; private set; }
@@ -41,6 +40,7 @@ namespace RubiksCube.ViewModels
         public ICommand MinimizeWindowCommand { get; private set; }
         public ICommand FullscreenWindowCommand { get; private set; }
         public ICommand RandomizeCommand { get; private set; }
+        public ICommand ResetCommand { get; private set; }
 
         public Cube RubiksCube
         {
@@ -80,6 +80,7 @@ namespace RubiksCube.ViewModels
             MinimizeWindowCommand = new RelayCommand(MinimizeWindow);
             FullscreenWindowCommand = new RelayCommand(FullscreenWindow);
             RandomizeCommand = new RelayCommand(Randomize);
+            ResetCommand = new RelayCommand(Reset);
 
         }
 
@@ -141,7 +142,12 @@ namespace RubiksCube.ViewModels
 
         private void Randomize(object Parameter)
         {
-            _rubiksCube.Randomize(20);
+            RubiksCube.Randomize(20);
+        }
+
+        private void Reset(object parameter)
+        {
+            RubiksCube = new Cube();
         }
 
         #endregion
