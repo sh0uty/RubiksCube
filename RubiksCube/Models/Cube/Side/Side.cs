@@ -11,6 +11,7 @@ namespace RubiksCube.Models
 
         #region Events
 
+        //ProperyChanged Event für die UI-Aktualisierung wenn sich eine Farbe am Würfel ändert
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string fullpath = "")
@@ -21,15 +22,18 @@ namespace RubiksCube.Models
         #endregion
 
         #region Public Members
-        //Liste der 9 Farben pro Seite
+        //Liste der 9 Farben pro Seite als OberservableCollection da die Klasse auch INotifyPropertyChanged benutzt
         private ObservableCollection<String> _cells;
 
+        //Eigenschaftsmethode für _cells
         public ObservableCollection<String> Cells
         {
             get { return _cells; }
             set
             {
                 _cells.Add(value.ToString());
+                
+                //Cells für UI Aktualisieren
                 OnPropertyChanged("Cells");
             }
         }
@@ -38,13 +42,13 @@ namespace RubiksCube.Models
 
         #region Constructors
 
-        //Leere Seite
+        //Konstruktor für eine Leere Seite
         public Side()
         {
             _cells = new ObservableCollection<String>();
         }
 
-        //Seite mit bestimmten Farben
+        //Konstruktor für eine Seite mit bestimmten Farben
         public Side(string color)
         {
             _cells = new ObservableCollection<String>();
