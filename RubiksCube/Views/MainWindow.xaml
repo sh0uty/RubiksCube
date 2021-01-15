@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RubiksCube.Views"
         xmlns:models="clr-namespace:RubiksCube.Models"
         mc:Ignorable="d"
         Title="RubiksCube" Height="720" Width="1280" 
@@ -12,9 +11,8 @@
         ResizeMode="CanResizeWithGrip" 
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"
-        WindowState="{Binding CurWindowState}" 
         WindowStyle="None"
-        MouseDown="MoveWindow">
+        MouseDown="MoveWindow" Icon="rubikscubeicon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -26,16 +24,17 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <Image Grid.Column="0" Grid.Row="0" Source="../Images/rubikscubeicon.png" HorizontalAlignment="Left" Margin="6 5 0 0"/>
         <TextBlock Grid.Column="0" Grid.Row="0" Text="Rubiks Cube" Foreground="{StaticResource MenuButtonForegroundColor}" FontSize="28" Margin="40 0 0 0"/>
 
         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
-            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}" Command="{Binding MinimizeWindowCommand}">
+            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}" Click="MinimizeWindow">
                 <Image Source="../Images/minimize.png"/>
             </Button>
-            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}" Command="{Binding FullscreenWindowCommand}">
+            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}" Click="FullscreenWindow">
                 <Image Source="../Images/fullscreen.png"/>
             </Button>
-            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}" Command="{Binding CloseWindowCommand}">
+            <Button BorderThickness="0" Width="30" Height="30" Background="{StaticResource BackgroundColor}" Click="CloseWindow">
                 <Image Source="../Images/clear.png"/>
             </Button>
         </StackPanel>

@@ -5,7 +5,6 @@ using System;
 
 namespace RubiksCube.Models
 {
-
     public class Side : INotifyPropertyChanged
     {
 

@@ -25,8 +25,6 @@ namespace RubiksCube.ViewModels
 
         private Cube _rubiksCube;
 
-        private WindowState _CurWindowState;
-
         #endregion
 
         #region Public Members
@@ -36,9 +34,6 @@ namespace RubiksCube.ViewModels
         public ICommand RotateCounterClockwiseCommand { get; private set; }
         public ICommand SaveCubeCommand { get; private set; }
         public ICommand LoadCubeCommand { get; private set; }
-        public ICommand CloseWindowCommand { get; private set; }
-        public ICommand MinimizeWindowCommand { get; private set; }
-        public ICommand FullscreenWindowCommand { get; private set; }
         public ICommand RandomizeCommand { get; private set; }
         public ICommand ResetCommand { get; private set; }
 
@@ -50,16 +45,6 @@ namespace RubiksCube.ViewModels
                     return;
                 _rubiksCube = value;
                 OnPropertyChanged("RubiksCube");
-            }
-        }
-
-        public WindowState CurWindowState
-        {
-            get { return _CurWindowState; }
-            set
-            {
-                _CurWindowState = value;
-                OnPropertyChanged("CurWindowState");
             }
         }
 
@@ -76,9 +61,6 @@ namespace RubiksCube.ViewModels
             RotateCounterClockwiseCommand = new RelayCommand(RotateCounterClockwise);
             LoadCubeCommand = new RelayCommand(LoadCube);
             SaveCubeCommand = new RelayCommand(SaveCube);
-            CloseWindowCommand = new RelayCommand(CloseWindow);
-            MinimizeWindowCommand = new RelayCommand(MinimizeWindow);
-            FullscreenWindowCommand = new RelayCommand(FullscreenWindow);
             RandomizeCommand = new RelayCommand(Randomize);
             ResetCommand = new RelayCommand(Reset);
 
@@ -120,24 +102,6 @@ namespace RubiksCube.ViewModels
             {
                 LoadSaveCube.SaveCubeToFile(RubiksCube, saveFileDialog.FileName);
             }
-        }
-
-        private void CloseWindow(object parameter)
-        {
-            Environment.Exit(0);
-        }
-
-        private void MinimizeWindow(object parameter)
-        {
-            CurWindowState = WindowState.Minimized;
-        }
-
-        private void FullscreenWindow(object parameter)
-        {
-            if (CurWindowState == WindowState.Normal)
-                CurWindowState = WindowState.Maximized;
-            else
-                CurWindowState = WindowState.Normal;
         }
 
         private void Randomize(object Parameter)

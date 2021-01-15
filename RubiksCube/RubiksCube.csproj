@@ -100,7 +100,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\rubikscubeicon.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\fullscreen.png" />
   </ItemGroup>
@@ -111,7 +113,7 @@
     <Resource Include="Images\clear.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\rubikscube.png" />
+    <Resource Include="Views\rubikscubeicon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

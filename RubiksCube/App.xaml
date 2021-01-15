@@ -9,9 +9,7 @@
         <SolidColorBrush x:Key="MenuButtonBackgroundColor" Color="#01a3a4" />
         <SolidColorBrush x:Key="MenuButtonForegroundColor" Color="#c8d6e5" />
         <SolidColorBrush x:Key="MenuButtonHoverColor" Color="#341f97" />
-
-        <ImageBrush x:Key="GridBackground"  ImageSource="Images/rubikscube.png" Opacity="0.05" TileMode="FlipXY" Viewport="0 0 100 100" ViewportUnits="Absolute"/>
-
+    
         <Style TargetType="Rectangle">
             <Setter Property="Margin" Value="1"/>
             <Setter Property="StrokeThickness" Value="0.5"/>
