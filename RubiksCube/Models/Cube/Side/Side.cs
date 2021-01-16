@@ -21,7 +21,7 @@ namespace RubiksCube.Models
         #endregion
 
         #region Public Members
-        //Liste der 9 Farben pro Seite als OberservableCollection da die Klasse auch INotifyPropertyChanged benutzt
+        //Liste der 9 Farben pro Seite als OberservableCollection, da diese Collection auch INotifyPropertyChanged implementiert
         private ObservableCollection<String> _cells;
 
         //Eigenschaftsmethode für _cells
@@ -30,7 +30,9 @@ namespace RubiksCube.Models
             get { return _cells; }
             set
             {
-                _cells.Add(value.ToString());
+                if (value == _cells)
+                    return;
+                _cells = value;
                 
                 //Cells für UI Aktualisieren
                 OnPropertyChanged("Cells");

@@ -12,7 +12,8 @@
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"
         WindowStyle="None"
-        MouseDown="MoveWindow" Icon="rubikscubeicon.png">
+        MouseDown="MoveWindow" 
+        Icon="rubikscubeicon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>

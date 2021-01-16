@@ -88,6 +88,7 @@ namespace RubiksCube.Models
             Sides = new Side[6];
             random = new Random();
 
+            //Jede Seite einfarbig machen mit den vordefinierten Farben-Array
             for(int i = 0; i < Sides.Length; i++)
             {
                 Sides[i] = new Side(Colors[i]);
