@@ -112,8 +112,5 @@
   <ItemGroup>
     <Resource Include="Images\clear.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\rubikscubeicon.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

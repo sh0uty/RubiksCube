@@ -13,7 +13,7 @@
         FontFamily="Century Gothic"
         WindowStyle="None"
         MouseDown="MoveWindow" 
-        Icon="rubikscubeicon.png">
+        Icon="../Views/rubikscubeicon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
