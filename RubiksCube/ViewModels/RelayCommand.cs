@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace RubiksCube.ViewModels
 {
-    //Mithilfe dieser Klasse wird aus einer Funktion ein ICommand sodass man diese mit den Buttons verbinden kann
+    //Mithilfe dieser Klasse wird aus einer Funktion ein ICommand, sodass man diese mit den Buttons verbinden kann
     class RelayCommand : ICommand
     {
         #region Events

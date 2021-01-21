@@ -7,6 +7,8 @@ namespace RubiksCube.Views
 {
     public partial class MainWindow : Window
     {
+        #region Constructor
+
         public MainWindow()
         {
             InitializeComponent();
@@ -14,6 +16,10 @@ namespace RubiksCube.Views
             //DataContext mit dem Viewmodel verbinden
             this.DataContext = new CubeViewModel();
         }
+
+        #endregion
+
+        #region Public Members
 
         public void MoveWindow(object sender, MouseButtonEventArgs e)
         {
@@ -27,6 +33,10 @@ namespace RubiksCube.Views
 
             }
         }
+
+        #endregion
+
+        #region Private Members
 
         private void CloseWindow(object sender, RoutedEventArgs e)
         {
@@ -48,5 +58,8 @@ namespace RubiksCube.Views
             else
                 this.WindowState = WindowState.Normal;
         }
+
+        #endregion
+
     }
 }
